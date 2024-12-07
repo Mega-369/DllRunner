@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\NT Headers">
+      <UniqueIdentifier>{dd565f9a-9964-4e22-a859-dcef33439e19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\NT Header">
+      <UniqueIdentifier>{b506b2dd-4728-4f7f-990f-4e3df3c38587}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DR_ResourceNTHeaderInfo.h">
+      <Filter>Файлы заголовков\NT Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DR_ImportNTHeaderInfo.h">
+      <Filter>Файлы заголовков\NT Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DR_ExportNTHeaderInfo.h">
+      <Filter>Файлы заголовков\NT Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DR_PEParserInternal.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="DR_PEInfo.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="DR_SectionInfo.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DR_PEParser.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DR_PEParser.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="DR_ResourceNTHeaderInfo.cpp">
+      <Filter>Исходные файлы\NT Header</Filter>
+    </ClCompile>
+    <ClCompile Include="DR_ImportNTHeaderInfo.cpp">
+      <Filter>Исходные файлы\NT Header</Filter>
+    </ClCompile>
+    <ClCompile Include="DR_ExportNTHeaderInfo.cpp">
+      <Filter>Исходные файлы\NT Header</Filter>
+    </ClCompile>
+    <ClCompile Include="DR_PEParserInternal.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="DR_PEInfo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="DR_SectionInfo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

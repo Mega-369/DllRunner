@@ -1,0 +1,5 @@
+obj/*
+out/*
+*.vcxproj.user
+*/.vs/*
+lib/*

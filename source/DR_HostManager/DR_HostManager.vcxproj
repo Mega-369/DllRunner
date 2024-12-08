@@ -20,9 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DR_HostManager.h" />
+    <ClInclude Include="DR_HostManagerInternal.h" />
+    <ClInclude Include="DR_ResoruceUnpacker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DR_HostManager.cpp" />
+    <ClCompile Include="DR_HostManagerInternal.cpp" />
+    <ClCompile Include="DR_ResoruceUnpacker.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -152,7 +156,7 @@ COPY $(OutDir)$(TargetName)$(TargetExt) ..\..\out\$(Configuration)_$(Platform)\ 
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>..\..\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\ext\zlib\include\;..\..\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>

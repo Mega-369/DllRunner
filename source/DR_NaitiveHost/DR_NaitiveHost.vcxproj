@@ -18,24 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="DR_DefaultPEExecutor.cpp" />
-    <ClCompile Include="DR_PEExecutor.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\include\DR_PEExecutor.h" />
-    <ClInclude Include="DR_DefaultPEExecutor.h" />
-    <ClInclude Include="DR_ExecFuncWraps.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="DR_ExecFuncWrapsX64.asm" Condition="'$(Platform)'=='x64'" />
-    <MASM Include="DR_ExecFuncWrapsX32.asm" Condition="'$(Platform)'=='Win32'" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5B0A0E1B-AE3E-40F1-A03D-D1835D86A5E5}</ProjectGuid>
-    <RootNamespace>DR_PEExecutor</RootNamespace>
+    <ProjectGuid>{ac36ce04-e06a-4b20-aa3b-c77e46fabfa0}</ProjectGuid>
+    <RootNamespace>DR_NaitiveHost</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -53,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -67,7 +54,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -132,7 +118,7 @@ COPY $(OutDir)$(TargetName)$(TargetExt) ..\..\out\$(Configuration)_$(Platform)\ 
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);DR_X86</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);DR_X86_HOST</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -156,7 +142,7 @@ COPY $(OutDir)$(TargetName)$(TargetExt) ..\..\out\$(Configuration)_$(Platform)\ 
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;DR_PE_EXECUTOR_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -168,8 +154,10 @@ COPY $(OutDir)$(TargetName)$(TargetExt) ..\..\out\$(Configuration)_$(Platform)\ 
       <AdditionalLibraryDirectories>..\..\lib\$(Configuration)_$(Platform)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>IF EXIST $(OutDir)$(TargetName)$(TargetExt) ( ^ 
+MKDIR ..\..\out\$(Configuration)_$(Platform) &amp;&amp; ^ 
+COPY $(OutDir)$(TargetName)$(TargetExt) ..\..\out\$(Configuration)_$(Platform)\ ^ 
+)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -198,8 +186,10 @@ COPY $(OutDir)$(TargetName)$(TargetExt) ..\..\out\$(Configuration)_$(Platform)\ 
 )</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
   </ImportGroup>
 </Project>

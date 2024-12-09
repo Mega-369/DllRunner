@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 
-#ifndef DR_X86
+#ifndef DR_X86_HOST
 extern "C" struct DR_InvokeWithCallDeclX64Args
 {
 	std::int64_t ArgCount;

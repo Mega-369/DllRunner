@@ -33,7 +33,14 @@ std::optional<std::vector<BYTE>> DR_ResoruceUnpacker::UnpackBinResource(const st
 		return std::nullopt;
 	}
 
-	return std::move(dataBuffer);
+	auto decompressedBuffer = this->decompressedData(dataBuffer, *decompressedSize);
+	if (!decompressedBuffer.has_value())
+	{
+		DR_TRACE->TraceError(TEXT(__FUNCTION__": Failed to decompressed data. "));
+		return std::nullopt;
+	}
+	
+	return std::move(*decompressedBuffer);
 }
 
 std::optional<std::pair<LPVOID, DWORD>> DR_ResoruceUnpacker::loadResource(const std::wstring& ResourceName) const
@@ -82,7 +89,7 @@ std::optional<WORD> DR_ResoruceUnpacker::getBinSectionCount(const std::wstring& 
 		return std::nullopt;
 	}
 
-	if (loadedResource->second == sizeof(WORD))
+	if (loadedResource->second != sizeof(WORD))
 	{
 		DR_TRACE->TraceError(TEXT(__FUNCTION__": Invalid size of resource \"%ws\". "), ResourceName.c_str());
 		return std::nullopt;
@@ -104,7 +111,7 @@ std::optional<DWORD> DR_ResoruceUnpacker::getDecompressedSize(const std::wstring
 		return std::nullopt;
 	}
 
-	if (loadedResource->second == sizeof(DWORD))
+	if (loadedResource->second != sizeof(DWORD))
 	{
 		DR_TRACE->TraceError(TEXT(__FUNCTION__": Ivalid size of resource \"%ws\". "), preparedName.c_str());
 		return std::nullopt;
